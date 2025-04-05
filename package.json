@@ -1,0 +1,11 @@
+{
+  "name": "videoplayer",
+  "version": "1.0.0",
+  "description": "a video player like youtube ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "honey",
+  "license": "ISC"
+}
