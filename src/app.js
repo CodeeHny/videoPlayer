@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import testRoute from './routes/testRoute.js'
 
 const app = express();
 
@@ -14,10 +13,13 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static("public"));
 app.use(cookieParser());
 
-app.use('/test/', testRoute)
 
-app.get('/', (req, res)=>{
-    res.send("hello");
-})
+// Routes imports
+import testRouter from './routes/test.route.js'
+import userRouter from './routes/user.route.js'
+
+// Route declaration
+app.use('/test', testRouter);
+app.use('/api/v1/user', userRouter)
 
 export default app
