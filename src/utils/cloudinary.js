@@ -8,17 +8,22 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
+
 const uploadOnCloudinary = async (localFilePath) => {
 
     try {
-
+        
         if (!localFilePath) return null;
+        
+        const response = await cloudinary.uploader
+        .upload(
+            localFilePath, {
+                resource_type: "auto",
+            }
+        )
+        
+        fs.unlinkSync(localFilePath);
 
-        const response = await cloudinary.uploader.upload(localFilePath, {
-            resource_type: "auto",
-        });
-
-        console.log("File uploaded successfully || path : ", response.url)
         return response;
 
     } catch (error) {
@@ -28,9 +33,4 @@ const uploadOnCloudinary = async (localFilePath) => {
 
 }
 
-cloudinary.uploader
-    .upload(
-        'https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg', {
-        public_id: 'shoes',
-    }
-    )
+ export default uploadOnCloudinary

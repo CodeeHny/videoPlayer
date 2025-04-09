@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
-import jwt, { sign } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -32,11 +32,6 @@ const userSchema = new mongoose.Schema({
     },
     refreshToken: {
         type: String,
-    },
-    role :{
-        type:String,
-        enum: ['user', 'admin', 'superadmin'],
-        default: 'user',
     },
     watchHistory: [
         {
